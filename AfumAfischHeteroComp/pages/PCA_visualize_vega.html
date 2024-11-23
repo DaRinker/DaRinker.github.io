@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Scatterplot with Custom Colors and Handling Overlapping Points</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script type="text/javascript">
+    var yourVlSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "An interactive scatterplot with metadata popups, custom colors, toggle functionality, larger display size, and handling overlapping points without jitter.",
+      "width": 800,
+      "height": 800,
+      "data": {
+        "values": 	[
+{"PC1": -1.410556287, "PC2": -0.165753195, "compound": "Pyripyropene F", "Species": "Afischeri"},
+{"PC1": 2.254549288, "PC2": -4.877323446, "compound": "13-O-prenylfumitremorgin B", "Species": "Afischeri"},
+{"PC1": 3.909393467, "PC2": 0.364480938, "compound": "Deoxybrevianamide E", "Species": "Afischeri"},
+{"PC1": 1.641799503, "PC2": 2.023010111, "compound": "Acetylaszonalenin", "Species": "Afischeri"},
+{"PC1": 1.548612397, "PC2": 1.992044993, "compound": "4-Hydroxyaszonalenin", "Species": "Afischeri"},
+{"PC1": 1.982998347, "PC2": 2.138277624, "compound": "Aszonalenin", "Species": "Afischeri"},
+{"PC1": 2.552114725, "PC2": -2.677615051, "compound": "Tryprostatin C/D", "Species": "Afischeri"},
+{"PC1": 2.003357902, "PC2": -3.514824484, "compound": "spiro[5H,10H-dipyrrolo-[1,2-a:1′,2′-d]pyrazine-2-(3H),2′-[2H]-indole]-3′,5,10(1′H)trione", "Species": "Afischeri"},
+{"PC1": 2.061209874, "PC2": -4.791968824, "compound": "Fumitremorgin A", "Species": "Afischeri"},
+{"PC1": -1.557358531, "PC2": -0.631801113, "compound": "Helvolic acid", "Species": "Afischeri"},
+{"PC1": -1.672876853, "PC2": -0.130527875, "compound": "Pyripyropene H", "Species": "Afischeri"},
+{"PC1": -1.638432187, "PC2": -0.325829949, "compound": "16-O-deacetyl helvolic acid 21,16-lactone", "Species": "Afischeri"},
+{"PC1": -2.134994029, "PC2": -0.729252867, "compound": "Sartorypyrone A", "Species": "Afischeri"},
+{"PC1": -2.271541063, "PC2": -0.606690072, "compound": "Azonapyrone A", "Species": "Afischeri"},
+{"PC1": -1.927630369, "PC2": -0.85191572, "compound": "Neosartoricin (tautomer2)", "Species": "Afischeri"},
+{"PC1": -1.75539209, "PC2": -0.339268882, "compound": "Neosartoricin C", "Species": "Afischeri"},
+{"PC1": -1.583626993, "PC2": -0.309715879, "compound": "Neosartoricin D", "Species": "Afischeri"},
+{"PC1": -1.92131097, "PC2": -0.670147459, "compound": "Neosartoricin (tautomer1)", "Species": "Afischeri"},
+{"PC1": 0.580551263, "PC2": 0.518994114, "compound": "Hexadehydroastechrom (monomer)", "Species": "Afischeri"},
+{"PC1": 1.373443109, "PC2": 0.928110558, "compound": "Trihistatin", "Species": "Afischeri"},
+{"PC1": 1.334555793, "PC2": 2.638214213, "compound": "Cottoquinazoline G", "Species": "Afischeri"},
+{"PC1": -1.670036957, "PC2": -0.074150764, "compound": "Pyripyropene A", "Species": "Afischeri"},
+{"PC1": 1.589024186, "PC2": 1.981232956, "compound": "Cottoquinazoline E", "Species": "Afischeri"},
+{"PC1": 1.555855912, "PC2": 2.65731923, "compound": "Cottoquinazoline G", "Species": "Afischeri"},
+{"PC1": 1.440239906, "PC2": 2.730906001, "compound": "Fumitremorgin F", "Species": "Afischeri"},
+{"PC1": 1.095564622, "PC2": 2.278068116, "compound": "Fumitremorgin G/L", "Species": "Afischeri"},
+{"PC1": 0.19033307, "PC2": 1.312646997, "compound": "Brevianamide L", "Species": "Afischeri"},
+{"PC1": 0.117070376, "PC2": 1.544184153, "compound": "Brevianamide O", "Species": "Afischeri"},
+{"PC1": 0.263248517, "PC2": 1.788525803, "compound": "Brevianamide P", "Species": "Afischeri"},
+{"PC1": -2.584909817, "PC2": -0.779437454, "compound": "Neosartorin", "Species": "Afischeri"},
+{"PC1": -0.534077598, "PC2": 0.375341473, "compound": "Bisdethiobis(methylthio)gliotoxin", "Species": "Afischeri"},
+{"PC1": -1.586824463, "PC2": -0.439029002, "compound": "Pyripyropene O", "Species": "Afischeri"},
+{"PC1": -0.555394189, "PC2": 0.249469807, "compound": "Gliotoxin", "Species": "Afischeri"},
+{"PC1": 2.376009235, "PC2": 2.48411658, "compound": "Isoroquefortine C / Roquefortine C", "Species": "Afischeri"},
+{"PC1": 0.076534574, "PC2": 1.181208137, "compound": "Chaetoglobosin 542", "Species": "Afischeri"},
+{"PC1": -1.123539799, "PC2": -0.784814733, "compound": "Fumagillol", "Species": "Afischeri"},
+{"PC1": -0.897127599, "PC2": 0.124340425, "compound": "Clavaric acid", "Species": "Afischeri"},
+{"PC1": 0.447974192, "PC2": 1.671218695, "compound": "Circumdatin C", "Species": "Afischeri"},
+{"PC1": -0.170861363, "PC2": 0.429669267, "compound": "Dimetoxycircumdatin C", "Species": "Afischeri"},
+{"PC1": -1.191927349, "PC2": 0.096535948, "compound": "Ilicicolin E", "Species": "Afischeri"},
+{"PC1": -1.276942313, "PC2": 0.406006845, "compound": "Betaenone E", "Species": "Afischeri"},
+{"PC1": 2.639179101, "PC2": -0.045772329, "compound": "Brevianamide F ", "Species": "Afischeri"},
+{"PC1": -1.680853141, "PC2": 0.596225053, "compound": "Betaenone G", "Species": "Afischeri"},
+{"PC1": -1.694179492, "PC2": 0.745052314, "compound": "Betaenone H", "Species": "Afischeri"},
+{"PC1": -1.528409258, "PC2": 0.692450146, "compound": "Betaenone I", "Species": "Afischeri"},
+{"PC1": -1.649548602, "PC2": 0.701369172, "compound": "Betaenone J", "Species": "Afischeri"},
+{"PC1": -0.557782814, "PC2": -0.038483768, "compound": "Nidiascin C", "Species": "Afischeri"},
+{"PC1": 2.529588037, "PC2": 1.967316198, "compound": "Brevianamide K", "Species": "Afischeri"},
+{"PC1": 2.928863633, "PC2": 1.586187401, "compound": "Brevianamide Q", "Species": "Afischeri"},
+{"PC1": 2.969373941, "PC2": 1.321680702, "compound": "Brevianamide R", "Species": "Afischeri"},
+{"PC1": 2.168996384, "PC2": 1.900897178, "compound": "Brevianamide T", "Species": "Afischeri"},
+{"PC1": 2.636696742, "PC2": 1.14383082, "compound": "Brevianamide U", "Species": "Afischeri"},
+{"PC1": 2.887372411, "PC2": -0.721416293, "compound": "Tryprostatin B", "Species": "Afischeri"},
+{"PC1": 3.736629888, "PC2": 0.978672474, "compound": "Brevianamide V/W", "Species": "Afischeri"},
+{"PC1": -0.775359534, "PC2": 0.052552204, "compound": "(3β,22E)-Ergosta-4,6,8(14),22-tetraene-3-ol", "Species": "Afischeri"},
+{"PC1": 2.740027867, "PC2": -0.0687479, "compound": "Brevianamide E", "Species": "Afischeri"},
+{"PC1": 1.368728781, "PC2": 1.435084024, "compound": "Brevianamide A", "Species": "Afischeri"},
+{"PC1": 1.418932775, "PC2": 1.281243465, "compound": "Brevianamide C", "Species": "Afischeri"},
+{"PC1": 1.374109723, "PC2": 1.189755297, "compound": "Brevianamide D", "Species": "Afischeri"},
+{"PC1": 2.319365895, "PC2": -3.243817243, "compound": "Fumitremorgin C", "Species": "Afischeri"},
+{"PC1": -2.333488258, "PC2": -0.345589831, "compound": "Secalonic acid A/B/C/E/F/G", "Species": "Afischeri"},
+{"PC1": 2.287709576, "PC2": -4.819431065, "compound": "Fumitremorgin B", "Species": "Afischeri"},
+{"PC1": 2.195767612, "PC2": -4.702869435, "compound": "Verruculogen", "Species": "Afischeri"},
+{"PC1": -1.46467483, "PC2": -0.628563643, "compound": "5-hydroxy-7-methoxy-4-methylcoumarin", "Species": "Afum"},
+{"PC1": -2.134994029, "PC2": -0.729252867, "compound": "Sartorypyrone A", "Species": "Afum"},
+{"PC1": -1.676948643, "PC2": -0.046469533, "compound": "Thielavin Z8", "Species": "Afum"},
+{"PC1": -1.9073666, "PC2": -0.422935619, "compound": "Trypacidin", "Species": "Afum"},
+{"PC1": -1.265533353, "PC2": 0.16746994, "compound": "Zearalanone", "Species": "Afum"},
+{"PC1": -1.226347814, "PC2": 0.103782501, "compound": "Zearalenol-(alpha)/Zearalenol-(beta)", "Species": "Afum"},
+{"PC1": -0.79421573, "PC2": 0.392385599, "compound": "(-)-Sclerosporin", "Species": "Afum"},
+{"PC1": -1.463294013, "PC2": 0.375009371, "compound": "1-hydroxyisorhodoptilometrin", "Species": "Afum"},
+{"PC1": 1.811659022, "PC2": 1.018153414, "compound": "10,20-dehydro[12,13-dehydroprolyl-2-(1,1-dimethylallyl)tryptophyl]diketopiperazine]", "Species": "Afum"},
+{"PC1": 2.800638152, "PC2": 1.508147263, "compound": "12,13-Dehydroprolyl-2-(1,1-dimethylallyltryptophyl)diketopiperazine", "Species": "Afum"},
+{"PC1": 3.909393467, "PC2": 0.364480938, "compound": "Deoxybrevianamide E", "Species": "Afum"},
+{"PC1": 2.62527484, "PC2": -4.194103125, "compound": "12,13-Dihydroxyfumitremorgin C", "Species": "Afum"},
+{"PC1": -2.271541063, "PC2": -0.606690072, "compound": "14-epi-azonapyrone A", "Species": "Afum"},
+{"PC1": -0.719708892, "PC2": 0.710141991, "compound": "19,20-Epoxycytochalasin D", "Species": "Afum"},
+{"PC1": -1.125426296, "PC2": 0.456324324, "compound": "2-Hydroxyacoronene", "Species": "Afum"},
+{"PC1": -0.853359694, "PC2": 0.244928373, "compound": "5,8-Epidioxyergosta-6,9(11),22-trien-3-ol", "Species": "Afum"},
+{"PC1": 0.238513214, "PC2": 0.590995601, "compound": "Asterriquinone-analogue", "Species": "Afum"},
+{"PC1": -2.028741279, "PC2": -0.40521937, "compound": "Bisdechlorogeodin", "Species": "Afum"},
+{"PC1": -0.534077598, "PC2": 0.375341473, "compound": "Bisdethiobis(methylthio)gliotoxin", "Species": "Afum"},
+{"PC1": 1.368728781, "PC2": 1.435084024, "compound": "Brevianamide A", "Species": "Afum"},
+{"PC1": -1.434844838, "PC2": -0.036320945, "compound": "Desmethyl dermoquinone", "Species": "Afum"},
+{"PC1": 2.554580403, "PC2": -3.508155808, "compound": "C-11-epimer-verruculogen-TR-2", "Species": "Afum"},
+{"PC1": -1.613720232, "PC2": -0.039701633, "compound": "Crotocin", "Species": "Afum"},
+{"PC1": 1.568163457, "PC2": -0.490689686, "compound": "Cyclo-(L-Pro-L-Leu)/Cyclo-((S)-Pro-(S)-Leu)", "Species": "Afum"},
+{"PC1": 2.196872606, "PC2": -0.07952895, "compound": "Cyclo-(Pro-Phe)", "Species": "Afum"},
+{"PC1": -2.025915612, "PC2": -0.289718047, "compound": "Diacetoxyscirpenol", "Species": "Afum"},
+{"PC1": -0.805591574, "PC2": 0.620190535, "compound": "Diepoxin-(zeta)", "Species": "Afum"},
+{"PC1": -0.775359534, "PC2": 0.052552204, "compound": "(3β,22E)-Ergosta-4,6,8(14),22-tetraene-3-ol", "Species": "Afum"},
+{"PC1": -0.937591108, "PC2": 0.170798587, "compound": "Ergosterol peroxide", "Species": "Afum"},
+{"PC1": -1.427703424, "PC2": -1.057049375, "compound": "Fumagillin", "Species": "Afum"},
+{"PC1": 0.839339162, "PC2": 0.831263689, "compound": "Fumigaclavine C", "Species": "Afum"},
+{"PC1": 1.555855912, "PC2": 2.65731923, "compound": "Fumiquinazoline C", "Species": "Afum"},
+{"PC1": 2.287709576, "PC2": -4.819431065, "compound": "Fumitremorgin B", "Species": "Afum"},
+{"PC1": 2.319365895, "PC2": -3.243817243, "compound": "Fumitremorgin C", "Species": "Afum"},
+{"PC1": -1.862359778, "PC2": -0.277292636, "compound": "Fusaproliferin", "Species": "Afum"},
+{"PC1": -0.555394189, "PC2": 0.249469807, "compound": "Gliotoxin", "Species": "Afum"},
+{"PC1": -1.557358531, "PC2": -0.631801113, "compound": "Helvolic acid", "Species": "Afum"},
+{"PC1": -1.658599999, "PC2": -0.181594815, "compound": "Isoherqueinone/Herqueinone", "Species": "Afum"},
+{"PC1": -1.658599999, "PC2": -0.181594815, "compound": "Isoherqueinone/Herqueinone", "Species": "Afum"},
+{"PC1": 1.083512039, "PC2": 1.93663771, "compound": "Meleagrin", "Species": "Afum"},
+{"PC1": -2.119782532, "PC2": -0.665250249, "compound": "Methyl-asterrate", "Species": "Afum"},
+{"PC1": -1.702598034, "PC2": -0.228066954, "compound": "Phomochromenone C", "Species": "Afum"},
+{"PC1": -2.109546272, "PC2": -0.728237408, "compound": "Monomethylsulochrin", "Species": "Afum"},
+{"PC1": 0.428327455, "PC2": 1.049406014, "compound": "New_89", "Species": "Afum"},
+{"PC1": -1.697572823, "PC2": 0.097494134, "compound": "Ramiferin", "Species": "Afum"},
+{"PC1": -2.060616921, "PC2": -0.787760003, "compound": "RFJ86-I", "Species": "Afum"},
+{"PC1": -1.702938526, "PC2": -0.438398092, "compound": "Rhizoctonic acid", "Species": "Afum"},
+{"PC1": -1.112280453, "PC2": 0.088828122, "compound": "Soudanone H", "Species": "Afum"},
+{"PC1": 2.003357902, "PC2": -3.514824484, "compound": "Spiro[5H,10H-dipyrrolo-[1,2-a:1′,2′-d]pyrazine-2-(3H),2′-[2H]-indole]-3′,5,10(1′H)trione", "Species": "Afum"},
+{"PC1": -2.09274543, "PC2": -0.73695316, "compound": "Sulochrin", "Species": "Afum"},
+{"PC1": -1.516793117, "PC2": -0.042836339, "compound": "Trichodermol", "Species": "Afum"},
+{"PC1": -0.97051989, "PC2": 0.94909683, "compound": "Pseudaboydin B", "Species": "Afum"},
+{"PC1": -1.751060356, "PC2": -0.227583254, "compound": "Trichothecin", "Species": "Afum"},
+{"PC1": -1.686264457, "PC2": -0.177788734, "compound": "Trichothecinol D", "Species": "Afum"},
+{"PC1": 1.440239906, "PC2": 2.730906001, "compound": "Fumitremorgin F", "Species": "Afum"},
+{"PC1": 2.195767612, "PC2": -4.702869435, "compound": "Verruculogen", "Species": "Afum"},
+{"PC1": -0.527788734, "PC2": 0.385756831, "compound": "Pseurotin", "Species": "Afum"},
+{"PC1": -1.786565692, "PC2": -0.275427158, "compound": "Questin", "Species": "Afum"},
+{"PC1": -0.907342908, "PC2": 0.470789655, "compound": "S-Sydonol", "Species": "Afum"}
+
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "size": 100
+      },
+      "encoding": {
+        "x": {"field": "PC1", "type": "quantitative"},
+        "y": {"field": "PC2", "type": "quantitative"},
+        "color": {
+          "field": "Species",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Afum", "Afischeri"],
+            "range": ["#1f77b4", "#ff7f0e"]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "compound",
+            "type": "nominal",
+            "title": "Compound"
+          }
+        ],
+        "opacity": {
+          "condition": {"param": "labelSelection", "value": 1},
+          "value": 0.3
+        }
+      },
+      "params": [
+        {
+          "name": "labelSelection",
+          "select": {"type": "point", "fields": ["Species"]},
+          "bind": "legend"
+        }
+      ]
+    };
+
+    vegaEmbed('#vis', yourVlSpec).catch(console.error);
+  </script>
+</body>
+</html>
